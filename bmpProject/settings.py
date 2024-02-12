@@ -126,7 +126,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+import cloudinary_storage
+
+
 STATIC_URL = 'static/'
+
+CLOUDINARY_STORAGE = {
+
+    'CLOUD_NAME': 'dphb7gqus',
+    'API_KEY': '318793793545251',
+    'API_SECRET': '6sFzgTgqKVr_Rfhszak-xSEtgec',
+}
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
