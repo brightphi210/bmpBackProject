@@ -13,9 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1c$!+-8zjp71bod++3=(rqo%vb$ju#3_e8m&5%w--uvcc+0!8h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -64,6 +64,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'bmpProject.wsgi.application'
+
+
 
 
 # Database
