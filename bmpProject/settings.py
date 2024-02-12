@@ -45,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'django.contrib.staticfiles.middleware.StaticFilesMiddleware',
 ]
 
 
@@ -130,7 +131,7 @@ import cloudinary_storage
 
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'static'
 CLOUDINARY_STORAGE = {
 
     'CLOUD_NAME': 'dphb7gqus',
