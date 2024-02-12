@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1c$!+-8zjp71bod++3=(rqo%vb$ju#3_e8m&5%w--uvcc+0!8h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -132,6 +132,7 @@ import cloudinary_storage
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
+
 CLOUDINARY_STORAGE = {
 
     'CLOUD_NAME': 'dphb7gqus',
@@ -156,3 +157,6 @@ EMAIL_HOST_USER = 'bmpinovations@gmail.com'
 EMAIL_HOST_PASSWORD = 'stmznbpjbmlwukmo'
 DEFAULT_FROM_USER = 'bmpinovations@gmail.com'
 SERVER_EMAIL =  'bmpinovations@gmail.com'
+
+
+BASE_URL = 'https://bmp-app.onrender.com'
