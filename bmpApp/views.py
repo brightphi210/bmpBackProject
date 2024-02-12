@@ -2,6 +2,12 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework import generics, status
 from rest_framework.response import Response
+
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+
 from . models import *
 from . serializers import *
 # from .signals import send_email_confirmation
@@ -12,12 +18,18 @@ from rest_framework import status
 # Create your views here.
 
 
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+
+
 @api_view(['GET'])
 def endpoint(request):
     data = {
         'Enpoint' : 'api/',
         'GET AND CREATE USER' : 'api/user/',
-        'CONFIRM EMAIL':'api/confirm-email/id/'
+        'CONFIRM EMAIL':'api/confirm-email/id/',
+        'LOGIN':'api/token/'
     }
     return Response(data)
 
