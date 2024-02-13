@@ -127,19 +127,19 @@ WSGI_APPLICATION = 'bmpProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 import dj_database_url
 
-DATABASES = {
-    'default' : dj_database_url.parse('postgres://bmp_user:JHVuX7uYMatnvSqNzpkDPPaIy3LCSzUr@dpg-cn53mjljm4es73brjn80-a.oregon-postgres.render.com/bmp')
+# DATABASES = {
+#     'default' : dj_database_url.parse('postgres://bmp_user:JHVuX7uYMatnvSqNzpkDPPaIy3LCSzUr@dpg-cn53mjljm4es73brjn80-a.oregon-postgres.render.com/bmp')
 
-}
+# }
 
 
 
