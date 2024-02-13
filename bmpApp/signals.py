@@ -7,18 +7,18 @@ from .models import *
 
 
 @receiver(post_save, sender=User)
-def create_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-        print('Profile created successfully')
+# def create_profile(sender, instance, created, **kwargs):
+#     if created:
+#         UserProfile.objects.create(user=instance)
+#         print('Profile created successfully')
 
 
-@receiver(post_save, sender=User)
-def update_profile(sender, instance, created, **kwargs):
+# @receiver(post_save, sender=User)
+# def update_profile(sender, instance, created, **kwargs):
     
-    if created == False:
-        instance.Userprofile.save()
-        print('Profile updated successfully')
+#     if created == False:
+#         instance.Userprofile.save()
+#         print('Profile updated successfully')
 
 
 @receiver(post_save, sender=User)

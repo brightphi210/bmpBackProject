@@ -69,4 +69,4 @@ def confirm_email(request, user_id):
     
     user.is_active= True
     user.save()
-    return redirect('https://bmp-app.onrender.com/api/user/')
+    return redirect('https://bmp-inovations.vercel.app/login')
