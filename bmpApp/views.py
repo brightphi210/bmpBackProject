@@ -28,6 +28,9 @@ def endpoint(request):
     data = {
         'Enpoint' : 'api/',
         'GET AND CREATE USER' : 'api/user/',
+        'GET, UPDATE, DELETE USER' : 'api/user/id/',
+        'GET AND CREATE PROFILE' : 'api/userprofiles',
+        'GET, UPDATE AND DELETE PROFILE' : 'api/userprofile/update/id',
         'CONFIRM EMAIL':'api/confirm-email/id/',
         'LOGIN':'api/token/',
         'REFRESH_TOKEN': 'api/token/refresh/',
