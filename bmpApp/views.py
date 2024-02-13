@@ -70,3 +70,32 @@ def confirm_email(request, user_id):
     user.is_active= True
     user.save()
     return redirect('https://bmp-inovations.vercel.app/login')
+
+
+class UserGetUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'pk'
+
+    def users_update(self, serializer):
+        instance = serializer.save()
+
+    def users_destroy(self, instance):
+        return super().perform_destroy(instance)
+    
+
+class UserProfileGet(generics.ListAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class UserProfileGetUpdate(generics.RetrieveUpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    lookup_field = 'pk'
+
+    def user_update(self, serializer):
+        instance = serializer.save()
+        

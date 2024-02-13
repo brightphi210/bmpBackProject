@@ -209,4 +209,4 @@ DEFAULT_FROM_USER = 'bmpinovations@gmail.com'
 SERVER_EMAIL =  'bmpinovations@gmail.com'
 
 
-BASE_URL = 'https://bmp-app.onrender.com'
+BASE_URL = 'http://127.0.0.1:8000'

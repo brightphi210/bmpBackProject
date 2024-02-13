@@ -32,3 +32,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['id'] = userProfile.id if userProfile else None
 
         return token
+    
+class UserProfileSerializer(ModelSerializer):
+    # user = UserSerializer()
+
+    class Meta:
+        model = UserProfile
+        fields = ['user', 'id', 'profile_pic']
