@@ -29,7 +29,8 @@ def endpoint(request):
         'Enpoint' : 'api/',
         'GET AND CREATE USER' : 'api/user/',
         'CONFIRM EMAIL':'api/confirm-email/id/',
-        'LOGIN':'api/token/'
+        'LOGIN':'api/token/',
+        'REFRESH_TOKEN': 'api/token/refresh/',
     }
     return Response(data)
 
