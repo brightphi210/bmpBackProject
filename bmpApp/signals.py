@@ -22,7 +22,7 @@ def update_profile(sender, instance, created, **kwargs):
             print('Profile updated successfully')
     except:
         instance.userprofile = None
-
+    
 
 @receiver(post_save, sender=User)
 def send_email_confirmation(sender, instance, created, **kwargs):

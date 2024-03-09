@@ -90,7 +90,7 @@ class UserGetUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
 class UserProfileGet(generics.ListAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class UserProfileGetUpdate(generics.RetrieveUpdateAPIView):
@@ -101,4 +101,38 @@ class UserProfileGetUpdate(generics.RetrieveUpdateAPIView):
 
     def user_update(self, serializer):
         instance = serializer.save()
+
+
+
+class ProductGetCreate(generics.ListCreateAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+
+        if response.status_code == status.HTTP_201_CREATED:
+            return Response({
+                'message' : 'Product Created successfully',
+                'status' : 'SUCCESS'
+                }, status=status.HTTP_201_CREATED)
         
+        else:
+            return Response({
+                'message': 'Product Creation Failed',
+                'status' : 'FAILED'
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+class ProductDetailsGetUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
+
+    # def product_update(self, serializer):
+    #     instance = serializer.save()
+    #     return instance
+
+
+    def product_delete(self, instance):
+        return super().perform_destroy(instance)

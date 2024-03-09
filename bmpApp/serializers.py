@@ -3,6 +3,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from .models import *
 
 class UserSerializer(ModelSerializer):
@@ -32,10 +33,24 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['id'] = userProfile.id if userProfile else None
 
         return token
-    
+
+
 class UserProfileSerializer(ModelSerializer):
-    # user = UserSerializer()
+    user = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
         model = UserProfile
-        fields = ['user', 'id', 'profile_pic']
+        fields = ['user', 'id', 'profile_pic',]
+        depth = 1
+
+
+class ProductSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+
+class CartSerializer(ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = '__all__'

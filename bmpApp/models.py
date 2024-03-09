@@ -33,7 +33,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255, null=True, blank=True)
-
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -63,8 +62,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         super(User, self).save(*args, **kwargs)
 
     def _str_(self):
-        return self.name
-    
+        return f" This is {self.name}"
+
+
 class UserProfile(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
@@ -72,4 +72,54 @@ class UserProfile(models.Model):
         upload_to='profile_pics/', default='default.png', blank=True, null=True)
 
     def __str__(self):
-        return self.user.email
+        return f"This is {self.user.email}"
+    
+
+
+class Product(models.Model):
+    productName = models.CharField(max_length=255, blank=True, null=True)
+    price = models.IntegerField()
+    description = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return f"This is the {self.productName} product name"
+
+class Payment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    payment_date = models.DateTimeField(auto_now_add=True)
+    payment_method = models.CharField(max_length=255, blank=True, null=True)
+    amount = models.IntegerField()
+
+    def __str__(self):
+        return f"This is {self.user.name} Made this payment {self.amount}"
+
+
+    
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return f"This {(self.product.productName)} is added to Cart"
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_date = models.DateTimeField(auto_now_add=True)
+    total_price = models.DecimalField(decimal_places=2, max_digits=20)
+
+    def __str__(self):
+        return f"This {self.user.name} has made an Order"
+    
+
+class OrderItem(models.Model):
+    quantity = models.IntegerField()
+    order_price = models.IntegerField()
+    price = models.IntegerField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return f"This is {self.product.productName} is an Order Item"
+    
+
